@@ -17,11 +17,12 @@ const Test = () => {
   }, []);
   return (
      <>
-    <h1 className="">
+     <div className="">
+    <h1 className="font-black text-center text-4xl ">
        Get Call Off Api 
     </h1>
 
-    <div className="max-w-[1200px] mx-auto w-full flex flex-col items-center justify-center pt-10 rounded">
+    <div className="max-w-[1200px] mx-auto w-full flex flex-col items-center justify-center pt-10 rounded bg-white">
       <table className=" px-4 max-w-[1200px] mx-auto w-full">
         <tr className="-b  py-4 bg-black text-white rounded-t-xl">
           <th className="py-2  ">Name</th>
@@ -33,8 +34,8 @@ const Test = () => {
 
         {user?.map((it , index) => {
           return (
-            <tr className={`${index==1? "bg-gray-200" : "bg-white" }   px-4`}>
-              <th className="py-4  pl-4 ">{it.name}</th>
+            <tr className={`${index==1|| index==3 || index==5 || index==7 || index==9?  "bg-gray-200"  : "bg-white" }   px-4`}>
+              <th  className="py-4  pl-4 ">{it.name}</th>
               <th className="pr-4 ">{it.email}</th>
               <th className="">{it.phone}</th>
               <th className="">{it.address.city}</th>
@@ -44,6 +45,7 @@ const Test = () => {
         })}
       </table>
     </div>
+     </div>
      
      </>
   );
