@@ -18,8 +18,8 @@ const Pagenation = () => {
         } ,[])  ;
 
   return (
-    <div>
-      sdsfdf
+    <div className='text-5xl font-bold text-center'>
+     Pagenation
     </div>
   )
 }
