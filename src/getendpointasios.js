@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-const Test = () => {
+const Getendpointasios = () => {
   const [user, setUsers] = useState([]);
   console.log(user, "apidata----------");
   useEffect(() => {
@@ -34,7 +34,9 @@ const Test = () => {
 
         {user?.map((it , index) => {
           return (
-            <tr className={`${index==1|| index==3 || index==5 || index==7 || index==9?  "bg-gray-200"  : "bg-white" }   px-4`}>
+            <tr onClick={()=>{
+              setUsers([it])
+            }} className={`${index==0?  "bg-gray-200"  : "bg-white" }   px-4`}>
               <th  className="py-4  pl-4 ">{it.name}</th>
               <th className="pr-4 ">{it.email}</th>
               <th className="">{it.phone}</th>
@@ -51,4 +53,4 @@ const Test = () => {
   );
 };
 
-export default Test;
+export default Getendpointasios;
