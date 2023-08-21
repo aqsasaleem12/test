@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-
+import Header from "./layout/Header";
 const Endpointbyid = () => {
   const [iddata, setIdData] = useState([]);
   const [selectedId, setSelectedId] = useState(2); 
@@ -22,9 +22,10 @@ const Endpointbyid = () => {
 
   return (
     <>
+    <Header/>
       <div className=" ">
         <h1 className="font-black text-center text-4xl">Get Endpoint By Id </h1>
-        <div className="flex max-w-[1200px] mx-auto items-center bg-black">
+        <div className="flex max-w-[1200px] mx-auto items-center bg-black mt-10">
      
           <div className="max-w-[1200px] mx-auto w-full flex flex-col items-center justify-center  rounded bg-white">
             <table className="px-4 max-w-[1200px] mx-auto w-full">

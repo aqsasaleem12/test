@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Header from "./layout/Header";
 const Getendpointasios = () => {
   const [user, setUsers] = useState([]);
   console.log(user, "apidata----------");
@@ -17,6 +18,7 @@ const Getendpointasios = () => {
   }, []);
   return (
      <>
+     <Header/>
      <div className="">
     <h1 className="font-black text-center text-4xl ">
        Get Call Off Api 
@@ -36,7 +38,7 @@ const Getendpointasios = () => {
           return (
             <tr onClick={()=>{
               setUsers([it])
-            }} className={`${index==0?  "bg-gray-200"  : "bg-white" }   px-4`}>
+            }} className={`${index==0 || index==2 || index==4?  "bg-gray-200"  : "bg-white" }   px-4`}>
               <th  className="py-4  pl-4 ">{it.name}</th>
               <th className="pr-4 ">{it.email}</th>
               <th className="">{it.phone}</th>

@@ -11,7 +11,7 @@ function App() {
                 <Routes>
                 <Route path="/" element={<Getendpointasios />} />
                 <Route  path="/endpointbyid" element={<Endpointbyid/>} />
-                <Route  path="/pagenation" element={<Pagenation/>} />
+                <Route  path="/pagenation" element={<Pagenation     />} />
                 </Routes>
             </BrowserRouter>
         </>
