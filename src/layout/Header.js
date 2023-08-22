@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const Header = () => {
   return (
-    <div className="bg-black">
+    <div className="bg-[#1a1630]">
     <div className="lg:max-w-5xl mx-auto ">
         <div className="flex justify-between items-center py-4">
             {/* logo */}
@@ -23,6 +23,9 @@ const Header = () => {
                     </Link>
                     <Link to="/Pagenation">
                         <li>Pagenation</li>
+                    </Link>
+                    <Link to="/signup">
+                        <li>Sign Up</li>
                     </Link>
                     
                 </ul>
