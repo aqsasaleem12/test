@@ -3,7 +3,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Getendpointasios from "./getendpointasios"
 import Endpointbyid from "./endpointbyid"
 import Pagenation from "./pagenation"
+import Product from "./product"
 import Signup from "./signup"
+import Updateapicall from "./updateapicall"
+
 function App() {
     return (
         <>
@@ -13,7 +16,9 @@ function App() {
                 <Route path="/" element={<Getendpointasios />} />
                 <Route  path="/endpointbyid" element={<Endpointbyid/>} />
                 <Route  path="/pagenation" element={<Pagenation/>} />
+                <Route  path="/product" element={<Product/>} />
                 <Route  path="/signup" element={<Signup/>} />
+                <Route  path="/update" element={<Updateapicall/>} />
                 </Routes>
             </BrowserRouter>
         </>

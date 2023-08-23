@@ -15,17 +15,20 @@ const Header = () => {
             <div className='w-full max-w-[700px]'>
                 <ul className="flex  justify-evenly  w-full text-white text-base">
                     <Link to="/">
-                        <li>API by All</li>
+                        <li>Get Endpoint  by All</li>
                     </Link>
                  
                     <Link to="/endpointbyid">
-                        <li>API by ID</li>
+                        <li>Get EndPoint by ID</li>
                     </Link>
                     <Link to="/Pagenation">
-                        <li>Pagenation</li>
+                        <li>Pagination</li>
                     </Link>
                     <Link to="/signup">
                         <li>Sign Up</li>
+                    </Link>
+                    <Link to="/update">
+                        <li>Update Api</li>
                     </Link>
                     
                 </ul>

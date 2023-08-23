@@ -1,99 +1,123 @@
 import React, { useState } from "react";
 import Header from "./layout/Header";
-import axios from "axios";
+import { useApiData } from "./Context/ApiDataContext";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
-  const [apidata, setApiData] = useState();
-  const [fname, setFname] = useState();
-  const [lname, setLname] = useState();
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const { apidata, setApiData } = useApiData(); // Using the context hook
+  const navigate = useNavigate();
+  console.log(apidata, "//////////******");
+  const [signupData, setSignupData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: ""
+  });
 
-  console.log(apidata, "aaaaaaaaaaaapppppppppppiiiiiiiiiiiiiii");
-  console.log(fname, "fname");
-  console.log(lname, "llllnnmma");
-  console.log(email, "eeeeeeeemmmmmmail");
-  console.log(password, "passssqw");
+  const handleChange = async (e) => {
+    e.preventDefault();
+    setSignupData({
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: ""
+    });
 
-
-
-
-
-  
-  const handleChange = (event) => {
-    event.preventDefault();
-    axios
-      .post("https://dummy.restapiexample.com/api/v1/create", {
-        fname: fname,
-        lname: lname,
-        email: email,
-        password: password
-      })
-      .then(function (response) {
-        setApiData(response);
-        setFname("");
-        setLname("");
-        setEmail("");
-      })
-      .catch(function (error) {
-        console.log(error);
+    try {
+      const response = await fetch("https://dummyjson.com/users/add", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          firstName: signupData.firstName,
+          lastName: signupData.lastName,
+          email: signupData.email,
+          password: signupData.password
+        })
       });
+
+      if (response.ok) {
+        const responseData = await response.json();
+        setApiData(responseData);
+        navigate("/");
+      } else {
+        console.error("Failed to fetch:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
 
+  const changeHandler = (name, value) => {
+    let temp = structuredClone(signupData);
+    temp[name] = value;
+    setSignupData(temp);
+  };
   return (
     <>
       <Header />
 
-      <form onSubmit={handleChange} className="max-w-[500px] mx-auto">
+      <form onSubmit={(e) => handleChange(e)} className="max-w-[500px] mx-auto">
         <h1 className="text-5xl text-gray-200 font-bold text-center pt-10">
-          Sign Up
+          Sign Up Form
         </h1>
         <div className="flex flex-col gap-4">
           <div className="w-full flex flex-col gap-3">
             <lable className="block text-gray-200 text-xl ">First Name</lable>
             <input
-              value={fname}
-              onChange={(event) => setFname(event.target.value)}
+              value={signupData.firstName}
+              onChange={(e) => changeHandler("firstName", e.target.value)}
               type="type"
-              placeholder="FIRST NAME"
+              placeholder="First Name"
               className="placeholder:text-gray-600 border border-gray-700 font-semibold  max-w-[500px] mx-auto w-full py-2 bg-transparent text-gray-300 px-3 rounded"
             />
           </div>
+
           <div className="w-full flex flex-col gap-3">
             <lable className="block text-gray-200 text-xl ">Last Name</lable>
             <input
-              value={lname}
-              onChange={(event) => setLname(event.target.value)}
-              type="type"
-              placeholder="LAST NAME"
-              className="placeholder:text-gray-600 border border-gray-700 font-semibold max-w-[500px] mx-auto w-full py-2 bg-transparent text-gray-300 px-3 rounded"
+              value={signupData.lastName}
+              onChange={(e) => changeHandler("lastName", e.target.value)}
+              type="text"
+              placeholder="Last Name"
+              className="placeholder:text-gray-600 border border-gray-700 font-semibold  max-w-[500px] mx-auto w-full py-2 bg-transparent text-gray-300 px-3 rounded"
             />
           </div>
           <div className="w-full flex flex-col gap-3">
             <lable className="block text-gray-200 text-xl ">Email</lable>
             <input
-              value={email}
-              onChange={(event) => setEmail(event.target.value)}
+              value={signupData.email}
+              onChange={(e) => changeHandler("email", e.target.value)}
               type="email"
-              placeholder="email#gmail.com"
-              className="placeholder:text-gray-600 border border-gray-700 font-semibold max-w-[500px] mx-auto w-full py-2 bg-transparent text-gray-300 px-3 rounded"
+              placeholder="Type Email Here"
+              className="placeholder:text-gray-600 border border-gray-700 font-semibold  max-w-[500px] mx-auto w-full py-2 bg-transparent text-gray-300 px-3 rounded"
             />
           </div>
-          <div className="w-full flex flex-col gap-3 ">
+          <div className="w-full flex flex-col gap-3">
             <lable className="block text-gray-200 text-xl ">Password</lable>
             <input
-              value={password}
-              onChange={(event) => setPassword(event.target.value)}
-              type="password"
-              placeholder="##########"
-              className="placeholder:text-gray-600 border border-gray-700 font-semibold max-w-[500px] mx-auto w-full py-2 bg-transparent text-gray-300 px-3 rounded"
+              value={signupData.password}
+              onChange={(e) => changeHandler("password", e.target.value)}
+              type="Password"
+              placeholder="password"
+              className="placeholder:text-gray-600 border border-gray-700 font-semibold  max-w-[500px] mx-auto w-full py-2 bg-transparent text-gray-300 px-3 rounded"
             />
           </div>
+          {/* <div className="w-full flex flex-col gap-3">
+            <lable className="block text-gray-200 text-xl ">Password</lable>
+            <input
+              value={signupData.password}
+              onChange={(e) => changeHandler("password", e.target.value)}
+              type="type"
+              placeholder="title"
+              className="placeholder:text-gray-600 border border-gray-700 font-semibold  max-w-[500px] mx-auto w-full py-2 bg-transparent text-gray-300 px-3 rounded"
+            />
+          </div> */}
+
           <button
             type="submit"
             className="border border-gray-400  px-4  py-2 max-w-[200px] w-full rounded text-gray-400 hover:bg-gray-900 "
           >
-            Signup
+            Submit
           </button>
         </div>
       </form>
