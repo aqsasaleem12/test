@@ -28,7 +28,7 @@ const Header = () => {
                         <li>Sign Up</li>
                     </Link>
                     <Link to="/update">
-                        <li>Update Api</li>
+                        <li>Get EndPoint by Update</li>
                     </Link>
                     
                 </ul>
