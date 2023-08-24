@@ -30,9 +30,9 @@ const Header = () => {
                     <Link to="/update">
                         <li>Get EndPoint by Update</li>
                     </Link>
-                    <Link to="/Deleteendpoint">
+                    {/* <Link to="/Deleteendpoint">
                         <li>Get EndPoint by Delete</li>
-                    </Link>
+                    </Link> */}
                     
                 </ul>
             </div>
