@@ -2,34 +2,35 @@ import React, { useState } from "react";
 import Header from "./layout/Header";
 import axios from "axios";
 
-const Updateapicall = () => {
-  const [update, setUpdate] = useState({});
-  console.log(update, "kjsddhhcjncusdhjccbhs");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLast] = useState("");
-  const [age, setAge] = useState("");
-
-  const apiUrl = "https://dummyjson.com/users/1";
-
-  const handleUpdate = (e) => {
-    e.preventDefault();
-
-    const dataUpdate = {
-      firstName: firstName,
-      lastName: lastName,
-      age: age
+const Deleteendpoint = () => {
+    const [update, setUpdate] = useState({});
+    console.log(update, "kjsddhhcjncusdhjccbhs");
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLast] = useState("");
+    const [age, setAge] = useState("");
+  
+    const apiUrl = "https://dummyjson.com/users/1";
+  
+    const handleUpdate = (e) => {
+      e.preventDefault();
+  
+      const dataUpdate = {
+        firstName: firstName,
+        lastName: lastName,
+        age: age
+      };
+  
+      axios
+        .delete(apiUrl, dataUpdate)
+        .then((response) => {   
+          setUpdate(response.data);
+          console.log("Update successful:", response.data);
+        })
+        .catch((error) => {
+          console.log("Error updating user:", error);
+        });
     };
-
-    axios
-      .patch(apiUrl, dataUpdate)
-      .then((response) => {
-        setUpdate(response.data);
-        console.log("Update successful:", response.data);
-      })
-      .catch((error) => {
-        console.log("Error updating user:", error);
-      });
-  };
+  
 
   return (
     <>
@@ -84,4 +85,4 @@ const Updateapicall = () => {
   );
 };
 
-export default Updateapicall;
+export default Deleteendpoint;

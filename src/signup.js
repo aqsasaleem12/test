@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Header from "./layout/Header";
 import { useApiData } from "./Context/ApiDataContext";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Signup = () => {
   const { apidata, setApiData } = useApiData(); // Using the context hook
@@ -25,7 +26,7 @@ const Signup = () => {
 
     try {
       const response = await fetch("https://dummyjson.com/users/add", {
-        method: "POST",
+        method:"post",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           firstName: signupData.firstName,
@@ -34,10 +35,9 @@ const Signup = () => {
           password: signupData.password
         })
       });
-
       if (response.ok) {
         const responseData = await response.json();
-        setApiData(responseData);
+        setApiData([...apidata,responseData]);
         navigate("/");
       } else {
         console.error("Failed to fetch:", response.statusText);

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const Header = () => {
   return (
     <div className="bg-[#1a1630]">
-    <div className="lg:max-w-5xl mx-auto ">
+    <div className="lg:max-w-7xl mx-auto ">
         <div className="flex justify-between items-center py-4">
             {/* logo */}
             <div>
@@ -12,7 +12,7 @@ const Header = () => {
             </div>
 
             {/* menu */}
-            <div className='w-full max-w-[700px]'>
+            <div className='w-full max-w-[1200px]'>
                 <ul className="flex  justify-evenly  w-full text-white text-base">
                     <Link to="/">
                         <li>Get Endpoint  by All</li>
@@ -29,6 +29,9 @@ const Header = () => {
                     </Link>
                     <Link to="/update">
                         <li>Get EndPoint by Update</li>
+                    </Link>
+                    <Link to="/Deleteendpoint">
+                        <li>Get EndPoint by Delete</li>
                     </Link>
                     
                 </ul>

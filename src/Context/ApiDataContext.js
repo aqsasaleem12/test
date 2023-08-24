@@ -7,7 +7,7 @@ export const useApiData = () => {
 };
 
 export const ApiDataProvider = ({ children }) => {
-  const [apidata, setApiData] = useState([]); // Initialize with an empty array
+  const [apidata, setApiData] = useState([]); 
 
   return (
     <ApiDataContext.Provider value={{ apidata, setApiData }}>
